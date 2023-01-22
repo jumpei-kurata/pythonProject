@@ -1,36 +1,24 @@
-import sqlite3
+from flask import Flask
+from flask import render_template
+from flask import request
+from flask import Response
 
-import conda_build.post
 
-# conn = sqlite3.connect('test_sqlite.db')
-conn = sqlite3.connect(':memory:')
+app = Flask(__name__)
 
-curs = conn.cursor()
 
-curs.execute(
-    'CREATE TABLE persons(id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING)')
-conn.commit()
+@app.route('/')
+def hello_world():
+    return 'top'
+@app.route('/hello')
+@app.route('/hello/<username>')
+def hello_world2(username=None):
+    return 'hello world ! {}'.format(username)
 
-curs.execute(
-    'INSERT INTO persons(name) values("Mike")'
-)
-conn.commit()
+def main():
+    app.debug = True
+    app.run()
+    # app.run(host='127.0.0.1', port=5000)
 
-curs.execute('SELECT * FROM persons')
-print(curs.fetchall())
-
-curs.execute(
-    'INSERT INTO persons(name) values("Nancy")')
-curs.execute(
-     'INSERT INTO persons(name) values("Jun")')
-conn.commit()
-
-curs.execute('UPDATE persons set name= "MICHEL" WHERE name = "Mike"')
-conn.commit()
-
-curs.execute('DELETE FROM persons WHERE name = "MICHEL"')
-conn.commit()
-
-curs.execute('SELECT * FROM persons')
-print(curs.fetchall())
-conn.close()
+if __name__ == '__main__':
+    main()
