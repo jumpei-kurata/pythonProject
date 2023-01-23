@@ -1,36 +1,15 @@
-import logging
-import queue
-import threading
-import time
+import hashlib
 
-logging.basicConfig(level=logging.DEBUG, format='%(threadName)s: %(message)s')
+print(hashlib.sha256(b'test').hexdigest())
+print(hashlib.sha256(b'test').hexdigest())
 
-def worker1(queue):
-    logging.debug('start')
-    time.sleep(5)
-    logging.debug('end')
-def worker2(queue):
-    logging.debug('start')
-    time.sleep(2)
-    logging.debug('end')
+user_name = 'user1'
+user_pass = 'password'
+db = {}
 
-if __name__ == '__main__':
-    queue = queue.Queue()
-    # for _ in range(5):
-    #     t = threading.Thread(target=worker1)
-    #     t.setDaemon(True)
-    #     t.start()
-        # threads.append(t)
-    t1 = threading.Thread(target=worker1, args=(queue,))
-    t2 = threading.Thread(target=worker2, args=(queue,))
-    t1.start()
-    t2.start()
-    # print('started')
-    # t1.join()
-    # t2.join()
+def get_digest(password):
+    password = bytes(user_pass, 'utf-8')
+    digest = hashlib.sha256(password).hexdigest()
+    db[user_name] = get_digest(user_pass)
 
-
-import string
-import random
-
-# from Crypto.Cipher import AES
+print(db)
