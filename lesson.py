@@ -1,21 +1,36 @@
 import logging
+import queue
 import threading
 import time
 
 logging.basicConfig(level=logging.DEBUG, format='%(threadName)s: %(message)s')
 
-def worker1():
+def worker1(queue):
     logging.debug('start')
     time.sleep(5)
     logging.debug('end')
-def worker2(x, y=1):
+def worker2(queue):
     logging.debug('start')
-    time.sleep(5)
+    time.sleep(2)
     logging.debug('end')
 
 if __name__ == '__main__':
-    t1 = threading.Thread(name='rename worker1', target=worker1)
-    t2 = threading.Thread(target=worker2, args=(100, ), kwargs={'y': 200})
+    queue = queue.Queue()
+    # for _ in range(5):
+    #     t = threading.Thread(target=worker1)
+    #     t.setDaemon(True)
+    #     t.start()
+        # threads.append(t)
+    t1 = threading.Thread(target=worker1, args=(queue,))
+    t2 = threading.Thread(target=worker2, args=(queue,))
     t1.start()
     t2.start()
-    print('started')
+    # print('started')
+    # t1.join()
+    # t2.join()
+
+
+import string
+import random
+
+# from Crypto.Cipher import AES
