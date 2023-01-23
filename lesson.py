@@ -1,37 +1,21 @@
-# from bs4 import BeautifulSoup
-# import requests
-#
-# html = requests.get('https://www.python.org')
-# # print(html.text)
-# soup = BeautifulSoup(html.text, 'lxml')
-#
-# titles = soup.find_all('title')
-# print(titles)
-#
-# intro = soup.find_all('div', {'class': 'introduction'})
-# print(intro[0].text)
-#
-#
-# import unittest
-#
-# # import calculation
-#
-#
-# class Cal(object):
-#     def add_num_and_double(self, x, y):
-#         """Add and double
-#
-#         >>> c = Cal()
-#         >>> c.add_num_and_double(1, 1)
-#         4
-#
-#         """
-#         result = x + y
-#         result *= 2
-#         return result
-#
-# if __name__ == '__main__':
-#     import doctest
-#     doctest.testmod()
+import logging
+import threading
+import time
 
+logging.basicConfig(level=logging.DEBUG, format='%(threadName)s: %(message)s')
 
+def worker1():
+    logging.debug('start')
+    time.sleep(5)
+    logging.debug('end')
+def worker2(x, y=1):
+    logging.debug('start')
+    time.sleep(5)
+    logging.debug('end')
+
+if __name__ == '__main__':
+    t1 = threading.Thread(name='rename worker1', target=worker1)
+    t2 = threading.Thread(target=worker2, args=(100, ), kwargs={'y': 200})
+    t1.start()
+    t2.start()
+    print('started')
