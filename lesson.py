@@ -1,24 +1,12 @@
-from flask import Flask
-from flask import render_template
-from flask import request
-from flask import Response
+from bs4 import BeautifulSoup
+import requests
 
+html = requests.get('https://www.python.org')
+# print(html.text)
+soup = BeautifulSoup(html.text, 'lxml')
 
-app = Flask(__name__)
+titles = soup.find_all('title')
+print(titles)
 
-
-@app.route('/')
-def hello_world():
-    return 'top'
-@app.route('/hello')
-@app.route('/hello/<username>')
-def hello_world2(username=None):
-    return 'hello world ! {}'.format(username)
-
-def main():
-    app.debug = True
-    app.run()
-    # app.run(host='127.0.0.1', port=5000)
-
-if __name__ == '__main__':
-    main()
+intro = soup.find_all('div', {'class': 'introduction'})
+print(intro[0].text)
