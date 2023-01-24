@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file:////wsl$/Ubuntu-20.04/home/kuratajumpei/python_programming_demo_app-0.0.1/roboter" />
-    <content url="file://$MODULE_DIR$" />
+    <content url="file:////wsl$/Ubuntu-20.04/home/kuratajumpei/python_programming_demo_app-0.0.1/roboter">
+      <sourceFolder url="file:////wsl$/Ubuntu-20.04/home/kuratajumpei/python_programming_demo_app-0.0.1/roboter" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

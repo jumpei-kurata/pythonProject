@@ -13,3 +13,4 @@ def get_digest(password):
     db[user_name] = get_digest(user_pass)
 
 print(db)
+
