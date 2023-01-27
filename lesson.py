@@ -6,7 +6,7 @@
 #     yield 'hello 3'
 
 def g_hello():
-    r = yield  'hello'
+    r = yield from 'hello'
     yield r
 
 g = g_hello()
