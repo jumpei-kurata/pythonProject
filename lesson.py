@@ -30,9 +30,13 @@ for line in sys.stdin:
 
 with open('stdout.log', 'w') as f:
     with contextlib.redirect_stdout(f):
-    print('hello')
+        print('hello')
 # sys.stdout.write('hello')
 
 logging.error('Error!')
 sys.stderr.write('Error!')
 
+import collections
+
+p = (10, 20)
+print(p[0])
