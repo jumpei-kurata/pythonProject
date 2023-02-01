@@ -148,3 +148,38 @@ def menu(entree, drink, dessert):
     print(dessert)
 
 menu(entree='beef', dessert='ice', drink='beer')
+
+def men(food, *args, **kwargs):
+    # for k, v in kwargs.items():
+    #     print(k, v)
+    print(food)
+    print(args)
+    print(kwargs)
+men('banana', 'apple', 'orange,', entree='beef', drink='coffe')
+
+def outer(a, b):
+    def plus(c, d):
+        return c + d
+    r = plus(a, b)
+    print(r)
+outer(11, 2)
+
+def out(a, b):
+    def inner():
+        return a + b
+    return inner
+
+f = out(1, 2)
+rr = f()
+print(rr)
+
+def add_num(a, b):
+    return a + b
+
+def greeting():
+    yield 'good mo'
+    yield 'good af'
+    yield 'good ni'
+
+for aaa in greeting():
+    print(aaa)
