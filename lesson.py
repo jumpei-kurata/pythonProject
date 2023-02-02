@@ -211,3 +211,5 @@ class Cal(object):
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
+
+# with open('te')
