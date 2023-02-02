@@ -183,3 +183,31 @@ def greeting():
 
 for aaa in greeting():
     print(aaa)
+
+class Person(object):
+    def __init__(self, name):
+        self.name = name
+
+    def run(self):
+        print('run')
+
+person = Person('Mike')
+person.run()
+
+class Cal(object):
+    def add(self, x, y):
+        """add and double
+        >>> c = Cal()
+        >>> c.add(1, 1)
+        5
+        :param x:
+        :param y:
+        :return:
+        """
+        result = x + y
+        result *= 2
+        return result
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()
