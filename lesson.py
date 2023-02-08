@@ -213,3 +213,6 @@ if __name__ == '__main__':
     doctest.testmod()
 
 # with open('te')
+
+
+def get_quick_reply_buttons(items: list[dict])
